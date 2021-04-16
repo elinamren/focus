@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import TimeDisplay from "./components/TimeDisplay";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Focus</h1>
       </header>
+      <TimeDisplay />
+      <iframe
+        title="Deep Focus Playlist"
+        src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZeKCadgRdKQ"
+        width="300"
+        height="380"
+        frameBorder="0"
+        allowtransparency="true"
+        allow="encrypted-media"
+      ></iframe>
     </div>
   );
 }
