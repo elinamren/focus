@@ -62,11 +62,10 @@ function App() {
         sessionBreak
           ? {
               backgroundImage:
-                "linear-gradient(rgb(141, 205, 138) 40%, rgb(148, 179, 255))",
+                "linear-gradient(to top, #37ecba 0%, #72afd3 100%)",
             }
           : {
-              backgroundImage:
-                "linear-gradient(rgb(255, 208, 182) 40%, rgb(255, 183, 195))",
+              backgroundImage: "linear-gradient( #FFC796 0%, #ff95b3)",
             }
       }
     >
