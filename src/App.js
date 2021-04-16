@@ -64,9 +64,7 @@ function App() {
               backgroundImage:
                 "linear-gradient(to top, #37ecba 0%, #72afd3 100%)",
             }
-          : {
-              backgroundImage: "linear-gradient( #FFC796 0%, #ff95b3)",
-            }
+          : { backgroundImage: "linear-gradient( #FFC796 0%, #ff95b3)" }
       }
     >
       <Header session={sessionType} />
