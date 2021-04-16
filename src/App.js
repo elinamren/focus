@@ -1,22 +1,32 @@
 import "./App.css";
+import Header from "./components/Header";
+import PlayList from "./components/PlayList";
 import TimeDisplay from "./components/TimeDisplay";
+
+const sessionBreak = false;
 
 function App() {
   return (
-    <div className="App">
-      <header>
-        <h1>Focus</h1>
-      </header>
+    <div
+      className="App"
+      style={
+        sessionBreak
+          ? {
+              backgroundImage:
+                "linear-gradient(rgb(141, 205, 138) 40%, rgb(148, 179, 255))",
+            }
+          : {
+              backgroundImage:
+                "linear-gradient(rgb(255, 208, 182) 40%, rgb(255, 183, 195))",
+            }
+      }
+    >
+      <Header session={sessionBreak ? "Break" : "Focus"} />
       <TimeDisplay />
-      <iframe
-        title="Deep Focus Playlist"
-        src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZeKCadgRdKQ"
-        width="300"
-        height="380"
-        frameBorder="0"
-        allowtransparency="true"
-        allow="encrypted-media"
-      ></iframe>
+      <button id="reset-button">Reset</button>
+      <button id="session-button">{sessionBreak ? "Focus" : "Break"}</button>
+      <br />
+      <PlayList />
     </div>
   );
 }

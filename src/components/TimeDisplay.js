@@ -1,16 +1,17 @@
 import { useState } from "react";
 import moment from "moment";
 import momentDurationFormatSetup from "moment-duration-format";
+import audioBells from "../bells.wav";
 
 momentDurationFormatSetup(moment);
 
 const TimeDisplay = () => {
-  const [timeLeft, setTimeLeft] = useState(25 * 60);
+  const [timeLeft, setTimeLeft] = useState(5);
   const [intervalId, setIntervalId] = useState(null);
   const formattedTimeLeft = moment
     .duration(timeLeft, "s")
     .format("mm.ss", { trim: false });
-
+  const timeIsUpSound = new Audio(audioBells);
   const isStarted = intervalId !== null;
   const handleStartStop = () => {
     if (isStarted) {
@@ -21,11 +22,12 @@ const TimeDisplay = () => {
         setTimeLeft((prevTime) => {
           const newTime = prevTime - 1;
           if (prevTime <= 0) {
+            timeIsUpSound.play();
             return 0;
           }
           return newTime;
         });
-      }, 10);
+      }, 1000);
       setIntervalId(newIntervalId);
     }
   };
