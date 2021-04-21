@@ -1,60 +1,11 @@
 import "./App.css";
-import Header from "./components/Header";
-import PlayList from "./components/PlayList";
-import TimeDisplay from "./components/TimeDisplay";
 import { useState } from "react";
-import audioBells from "./bells.wav";
+import Pomodoro from "./components/pomodoro/Pomodoro";
+import ToDo from "./components/todo/ToDo";
 
 function App() {
-  const timeIsUpSound = new Audio(audioBells);
   const [sessionType, setSessionType] = useState("Focus");
-  const [timeLeft, setTimeLeft] = useState(5);
-  const [intervalId, setIntervalId] = useState(null);
-  const isStarted = intervalId !== null;
-
   const sessionBreak = sessionType === "Break";
-
-  const handleStartStop = () => {
-    if (isStarted) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-    } else {
-      const newIntervalId = setInterval(() => {
-        setTimeLeft((prevTime) => {
-          const newTime = prevTime - 1;
-          if (prevTime <= 0) {
-            timeIsUpSound.play();
-            return;
-          }
-          return newTime;
-        });
-      }, 1000);
-      setIntervalId(newIntervalId);
-    }
-  };
-
-  function handleReset() {
-    clearInterval(intervalId);
-    setIntervalId(null);
-    if (sessionType === "Break") {
-      setTimeLeft(5 * 60);
-    } else {
-      setTimeLeft(25 * 60);
-    }
-  }
-
-  function handleSessionType() {
-    clearInterval(intervalId);
-    setIntervalId(null);
-    if (sessionType === "Break") {
-      setTimeLeft(25 * 60);
-      setSessionType("Focus");
-    } else {
-      setTimeLeft(5 * 60);
-      setSessionType("Break");
-    }
-  }
-
   return (
     <div
       className="App"
@@ -67,20 +18,12 @@ function App() {
           : { backgroundImage: "linear-gradient( #FFC796 0%, #ff95b3)" }
       }
     >
-      <Header session={sessionType} />
-      <TimeDisplay
-        timeLeft={timeLeft}
-        handleStartStop={handleStartStop}
-        isStarted={isStarted}
+      <Pomodoro
+        sessionType={sessionType}
+        setSessionType={setSessionType}
+        sessionBreak={sessionBreak}
       />
-      <button id="reset-button" onClick={handleReset}>
-        Reset
-      </button>
-      <button id="session-button" onClick={handleSessionType}>
-        {sessionBreak ? "Focus" : "Break"}
-      </button>
-      <br />
-      <PlayList sessionBreak={sessionBreak} />
+      <ToDo />
     </div>
   );
 }
