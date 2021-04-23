@@ -76,7 +76,7 @@ h2 {
   background-color: white;
   border-radius: 50px;
   padding: 2em;
-  height: 100%;
+  height: 95%;
   width: 40%;
 }
 
@@ -112,4 +112,13 @@ h2 {
   text-align: left;
   padding: 1em 2em;
   font-size: 1.2rem;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1em;
 }
