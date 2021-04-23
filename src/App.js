@@ -2,6 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import Pomodoro from "./components/pomodoro/Pomodoro";
 import ToDo from "./components/todo/ToDo";
+import Footer from "./components/Footer";
 
 function App() {
   const [sessionType, setSessionType] = useState("Focus");
@@ -24,6 +25,7 @@ function App() {
         sessionBreak={sessionBreak}
       />
       <ToDo />
+      <Footer />
     </div>
   );
 }
