@@ -76,7 +76,7 @@ h2 {
   background-color: white;
   border-radius: 50px;
   padding: 2em;
-  height: 95%;
+  height: 90%;
   width: 40%;
 }
 
@@ -120,5 +120,22 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 1em;
+  padding: 0.5em;
+}
+
+.moon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.moon-container div {
+  width: 60px;
+  word-spacing: 60px;
+}
+
+.moon {
+  margin: 0 1em;
 }
