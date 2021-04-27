@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const Pomodoro = (props) => {
   const timeIsUpSound = new Audio(audioBells);
-  const [timeLeft, setTimeLeft] = useState(5);
+  const [timeLeft, setTimeLeft] = useState(25 * 60);
   const [intervalId, setIntervalId] = useState(null);
   const isStarted = intervalId !== null;
 

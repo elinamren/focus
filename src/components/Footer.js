@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import newMoonImg from "../images/nm.png";
 import waxCreImg from "../images/waxc.png";
 import firstQuarImg from "../images/fq.png";
@@ -13,30 +13,33 @@ const Footer = () => {
   const [moonImage, setMoonImage] = useState(null);
   const [apiStatus, setApiStatus] = useState(true);
 
-  const apiLatitude = 59.309384;
-  const apiLongitude = 18.034847;
-  const apiKey =
-    "2dd88788-a4f3-11eb-8d12-0242ac130002-2dd8883c-a4f3-11eb-8d12-0242ac130002";
-  const apiUrl =
-    "https://api.stormglass.io/v2/astronomy/point?lat=" +
-    apiLatitude +
-    "&lng=" +
-    apiLongitude +
-    "&key=" +
-    apiKey;
-
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      const currentMoon = data.data[0].moonPhase.current.text;
-      setApiStatus(true);
-      setMoonphase(currentMoon);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      console.error("You have reached your daily quota: 50, request count: 51");
-      setApiStatus(false);
-    });
+  useEffect(() => {
+    const apiLatitude = 59.309384;
+    const apiLongitude = 18.034847;
+    const apiKey =
+      "2dd88788-a4f3-11eb-8d12-0242ac130002-2dd8883c-a4f3-11eb-8d12-0242ac130002";
+    const apiUrl =
+      "https://api.stormglass.io/v2/astronomy/point?lat=" +
+      apiLatitude +
+      "&lng=" +
+      apiLongitude +
+      "&key=" +
+      apiKey;
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        const currentMoon = data.data[0].moonPhase.current.text;
+        setApiStatus(true);
+        setMoonphase(currentMoon);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        console.error(
+          "You have reached your daily quota: 50, request count: 51"
+        );
+        setApiStatus(false);
+      });
+  }, []);
 
   if (moonphase === "New moon") {
     return setMoonImage(newMoonImg);
@@ -55,6 +58,7 @@ const Footer = () => {
   } else if (moonphase === "Waning crescent") {
     return setMoonImage(wanCreImg);
   }
+
   return (
     <footer>
       {apiStatus ? (
