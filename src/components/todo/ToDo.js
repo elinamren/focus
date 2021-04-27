@@ -3,7 +3,6 @@ import { useState } from "react";
 const ToDo = () => {
   const [item, setItem] = useState("");
   const [itemLabel, setItemLabel] = useState([]);
-  const [itemStatusDone, setItemStatusDone] = useState(false);
 
   function handleNewItem(event) {
     setItem(event.target.value);
@@ -17,8 +16,7 @@ const ToDo = () => {
   }
 
   function handleDoneItem() {
-    setItemStatusDone(true);
-    console.log("Done", itemStatusDone);
+    console.log("Done");
   }
 
   function handleDeleteItem(event) {
@@ -49,15 +47,7 @@ const ToDo = () => {
 
       <ul className="todo-list">
         {itemLabel.map((item) => (
-          <li
-            key={item}
-            id={item}
-            style={
-              itemStatusDone
-                ? { textDecoration: "line-through", color: "gray" }
-                : { textDecoration: "none", color: "black" }
-            }
-          >
+          <li key={item} id={item}>
             {item}
             <button onClick={handleDoneItem}>Done</button>
             <button onClick={handleDeleteItem}>Trash</button>
