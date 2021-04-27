@@ -3,6 +3,7 @@ import { useState } from "react";
 const ToDo = () => {
   const [item, setItem] = useState("");
   const [itemLabel, setItemLabel] = useState([]);
+  const [itemStatusDone, setItemStatusDone] = useState(false);
 
   function handleNewItem(event) {
     setItem(event.target.value);
@@ -13,6 +14,11 @@ const ToDo = () => {
     setItemLabel((prevValue) => {
       return [...prevValue, item];
     });
+  }
+
+  function handleDoneItem() {
+    setItemStatusDone(true);
+    console.log("Done", itemStatusDone);
   }
 
   function handleDeleteItem(event) {
@@ -43,8 +49,17 @@ const ToDo = () => {
 
       <ul className="todo-list">
         {itemLabel.map((item) => (
-          <li key={item} id={item}>
-            <input type="checkbox" /> {item}{" "}
+          <li
+            key={item}
+            id={item}
+            style={
+              itemStatusDone
+                ? { textDecoration: "line-through", color: "gray" }
+                : { textDecoration: "none", color: "black" }
+            }
+          >
+            {item}
+            <button onClick={handleDoneItem}>Done</button>
             <button onClick={handleDeleteItem}>Trash</button>
           </li>
         ))}

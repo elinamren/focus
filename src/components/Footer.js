@@ -7,6 +7,7 @@ import fullMoonImg from "../images/fm.png";
 import wanGibbImg from "../images/wang.png";
 import lastQuarImg from "../images/lq.png";
 import wanCreImg from "../images/wanc.png";
+import MoonImage from "./MoonImage";
 
 const Footer = () => {
   const [moonphase, setMoonphase] = useState(null);
@@ -63,51 +64,21 @@ const Footer = () => {
     <footer>
       {apiStatus ? (
         <div className="moon-container">
-          <img className="moon" src={moonImage} alt={moonphase} width="60" />
+          <MoonImage src={moonImage} alt={moonphase} />
           <div>
             <p>{moonphase}</p>
           </div>
         </div>
       ) : (
         <div>
-          <img className="moon" src={newMoonImg} alt="New moon" width="60" />
-          <img
-            className="moon"
-            src={waxCreImg}
-            alt="Waxing crescent"
-            width="60"
-          />
-          <img
-            className="moon"
-            src={firstQuarImg}
-            alt="First quarter"
-            width="60"
-          />
-          <img
-            className="moon"
-            src={waxGibImg}
-            alt="Waxing gibbous"
-            width="60"
-          />
-          <img className="moon" src={fullMoonImg} alt="Full moon" width="60" />
-          <img
-            className="moon"
-            src={wanGibbImg}
-            alt="Waning gibbous"
-            width="60"
-          />
-          <img
-            className="moon"
-            src={lastQuarImg}
-            alt="Last quarter"
-            width="60"
-          />
-          <img
-            className="moon"
-            src={wanCreImg}
-            alt="Waning crescent"
-            width="60"
-          />
+          <MoonImage src={newMoonImg} alt="New moon" />
+          <MoonImage src={waxCreImg} alt="Waxing crescent" />
+          <MoonImage src={firstQuarImg} alt="First quarter" />
+          <MoonImage src={waxGibImg} alt="Waxing gibbous" />
+          <MoonImage src={fullMoonImg} alt="Full moon" />
+          <MoonImage src={wanGibbImg} alt="Waning gibbous" />
+          <MoonImage src={lastQuarImg} alt="Last quarter" />
+          <MoonImage src={wanCreImg} alt="Waning crescent" />
         </div>
       )}
     </footer>
