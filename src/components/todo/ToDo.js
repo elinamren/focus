@@ -15,6 +15,10 @@ const ToDo = () => {
     });
   }
 
+  function handleDoneItem() {
+    console.log("Done");
+  }
+
   function handleDeleteItem(event) {
     console.log(event.target.parentNode.id);
     const itemTarget = event.target.parentNode.id;
@@ -44,7 +48,8 @@ const ToDo = () => {
       <ul className="todo-list">
         {itemLabel.map((item) => (
           <li key={item} id={item}>
-            <input type="checkbox" /> {item}{" "}
+            {item}
+            <button onClick={handleDoneItem}>Done</button>
             <button onClick={handleDeleteItem}>Trash</button>
           </li>
         ))}
