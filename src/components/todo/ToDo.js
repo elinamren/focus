@@ -1,19 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ToDo = () => {
+  const itemArrayFromLocalStorage = [
+    localStorage.getItem("FocusItemsLocalStorage"),
+  ];
   const [item, setItem] = useState("");
-  const [itemLabel, setItemLabel] = useState([]);
-
+  const [itemArray, setItemArray] = useState(itemArrayFromLocalStorage);
+  console.log(itemArrayFromLocalStorage);
   function handleNewItem(event) {
     setItem(event.target.value);
   }
 
   function handleAddItem(event) {
     event.preventDefault();
-    setItemLabel((prevValue) => {
+    setItemArray((prevValue) => {
       return [...prevValue, item];
     });
   }
+
+  useEffect(() => {
+    localStorage.setItem("FocusItemsLocalStorage", itemArray);
+  }, [itemArray]);
 
   function handleDoneItem() {
     console.log("Done");
@@ -22,7 +29,7 @@ const ToDo = () => {
   function handleDeleteItem(event) {
     console.log(event.target.parentNode.id);
     const itemTarget = event.target.parentNode.id;
-    setItemLabel((prevValue) => {
+    setItemArray((prevValue) => {
       return prevValue.filter((e) => e !== itemTarget);
     });
   }
@@ -46,7 +53,7 @@ const ToDo = () => {
       </form>
 
       <ul className="todo-list">
-        {itemLabel.map((item) => (
+        {itemArray.map((item) => (
           <li key={item} id={item}>
             {item}
             <button onClick={handleDoneItem}>Done</button>
