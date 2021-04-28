@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/focus/static/css/main.b29afebf.chunk.css",
+    "main.js": "/focus/static/js/main.f8aadf20.chunk.js",
+    "main.js.map": "/focus/static/js/main.f8aadf20.chunk.js.map",
+    "runtime-main.js": "/focus/static/js/runtime-main.639a20d1.js",
+    "runtime-main.js.map": "/focus/static/js/runtime-main.639a20d1.js.map",
+    "static/js/2.b57317bd.chunk.js": "/focus/static/js/2.b57317bd.chunk.js",
+    "static/js/2.b57317bd.chunk.js.map": "/focus/static/js/2.b57317bd.chunk.js.map",
+    "index.html": "/focus/index.html",
+    "static/css/main.b29afebf.chunk.css.map": "/focus/static/css/main.b29afebf.chunk.css.map",
+    "static/js/2.b57317bd.chunk.js.LICENSE.txt": "/focus/static/js/2.b57317bd.chunk.js.LICENSE.txt",
+    "static/media/bells.4bf4a9b3.wav": "/focus/static/media/bells.4bf4a9b3.wav",
+    "static/media/fm.768f7964.png": "/focus/static/media/fm.768f7964.png",
+    "static/media/fq.730448e0.png": "/focus/static/media/fq.730448e0.png",
+    "static/media/lq.94fd87d1.png": "/focus/static/media/lq.94fd87d1.png",
+    "static/media/nm.7db75b42.png": "/focus/static/media/nm.7db75b42.png",
+    "static/media/wanc.0839add2.png": "/focus/static/media/wanc.0839add2.png",
+    "static/media/wang.b2b32184.png": "/focus/static/media/wang.b2b32184.png",
+    "static/media/waxc.c4e9516b.png": "/focus/static/media/waxc.c4e9516b.png",
+    "static/media/waxg.8d5d759f.png": "/focus/static/media/waxg.8d5d759f.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.639a20d1.js",
+    "static/js/2.b57317bd.chunk.js",
+    "static/css/main.b29afebf.chunk.css",
+    "static/js/main.f8aadf20.chunk.js"
+  ]
+}
