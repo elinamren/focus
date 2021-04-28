@@ -6,7 +6,6 @@ const ToDo = () => {
   ];
   const [item, setItem] = useState("");
   const [itemArray, setItemArray] = useState(itemArrayFromLocalStorage);
-  console.log(itemArrayFromLocalStorage);
   function handleNewItem(event) {
     setItem(event.target.value);
   }
@@ -16,6 +15,7 @@ const ToDo = () => {
     setItemArray((prevValue) => {
       return [...prevValue, item];
     });
+    setItem("");
   }
 
   useEffect(() => {
@@ -27,7 +27,6 @@ const ToDo = () => {
   }
 
   function handleDeleteItem(event) {
-    console.log(event.target.parentNode.id);
     const itemTarget = event.target.parentNode.id;
     setItemArray((prevValue) => {
       return prevValue.filter((e) => e !== itemTarget);
