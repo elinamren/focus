@@ -11,4 +11,5 @@ Will come soon
 Reactjs  
 Momentjs  
 Weather API  
+Local storage
 
