@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 const ToDo = () => {
-  const itemArrayFromLocalStorage = [
-    localStorage.getItem("FocusItemsLocalStorage"),
-  ];
   const [item, setItem] = useState("");
-  const [itemArray, setItemArray] = useState(itemArrayFromLocalStorage);
+  const [itemArray, setItemArray] = useState([]);
   function handleNewItem(event) {
     setItem(event.target.value);
   }
+  useEffect(() => {
+    getLocalItems();
+  }, []);
 
   function handleAddItem(event) {
     event.preventDefault();
@@ -18,8 +18,23 @@ const ToDo = () => {
     setItem("");
   }
 
+  const saveLocalItems = () => {
+    localStorage.setItem("FocusItemsLocalStorage", JSON.stringify(itemArray));
+  };
+
+  const getLocalItems = () => {
+    if (localStorage.getItem("FocusItemsLocalStorage") === null) {
+      localStorage.setItem("FocusItemsLocalStorage", JSON.stringify([]));
+    } else {
+      let itemsFromLocal = JSON.parse(
+        localStorage.getItem("FocusItemsLocalStorage")
+      );
+      setItemArray(itemsFromLocal);
+    }
+  };
+
   useEffect(() => {
-    localStorage.setItem("FocusItemsLocalStorage", itemArray);
+    saveLocalItems();
   }, [itemArray]);
 
   function handleDoneItem() {
