@@ -15,8 +15,8 @@ const Footer = () => {
 
   const apiLatitude = 59.309384;
   const apiLongitude = 18.034847;
-  //   const apiKey =
-  //     "2dd88788-a4f3-11eb-8d12-0242ac130002-2dd8883c-a4f3-11eb-8d12-0242ac130002";
+  const apiKey =
+    "2dd88788-a4f3-11eb-8d12-0242ac130002-2dd8883c-a4f3-11eb-8d12-0242ac130002";
   const apiKey2 =
     "5f2bb7fa-a819-11eb-9cd1-0242ac130002-5f2bb886-a819-11eb-9cd1-0242ac130002";
   const apiUrl =
@@ -25,16 +25,13 @@ const Footer = () => {
     "&lng=" +
     apiLongitude +
     "&key=" +
-    apiKey2;
+    apiKey;
 
   const fetchMoon = async () => {
     const data = await fetch(apiUrl)
       .then((response) => response.json())
       .catch((error) => {
         console.error("Error:", error);
-        console.error(
-          "You have reached your daily quota: 50, request count: 51"
-        );
         setApiStatus(false);
       });
     if (data.errors) {
