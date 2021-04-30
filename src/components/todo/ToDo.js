@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
 const ToDo = () => {
-  const [item, setItem] = useState("");
-  const [itemArray, setItemArray] = useState([]);
+  const [inputText, setInputText] = useState("");
+  const [todos, setTodos] = useState([]);
+
   function handleNewItem(event) {
-    setItem(event.target.value);
+    setInputText(event.target.value);
   }
   useEffect(() => {
     getLocalItems();
@@ -12,15 +13,14 @@ const ToDo = () => {
 
   function handleAddItem(event) {
     event.preventDefault();
-    setItemArray((prevValue) => {
-      return [...prevValue, item];
+    setTodos((prevValue) => {
+      return [...prevValue, inputText];
     });
-    setItem("");
-    console.log(itemArray);
+    setInputText("");
   }
 
   const saveLocalItems = () => {
-    localStorage.setItem("FocusItemsLocalStorage", JSON.stringify(itemArray));
+    localStorage.setItem("FocusItemsLocalStorage", JSON.stringify(todos));
   };
 
   const getLocalItems = () => {
@@ -30,13 +30,13 @@ const ToDo = () => {
       let itemsFromLocal = JSON.parse(
         localStorage.getItem("FocusItemsLocalStorage")
       );
-      setItemArray(itemsFromLocal);
+      setTodos(itemsFromLocal);
     }
   };
 
   useEffect(() => {
     saveLocalItems();
-  }, [itemArray]);
+  }, [todos]);
 
   function handleDoneItem() {
     console.log("Done");
@@ -44,7 +44,7 @@ const ToDo = () => {
 
   function handleDeleteItem(event) {
     const itemTarget = event.target.parentNode.parentNode.id;
-    setItemArray((prevValue) => {
+    setTodos((prevValue) => {
       return prevValue.filter((e) => e !== itemTarget);
     });
   }
@@ -54,7 +54,7 @@ const ToDo = () => {
       <form className="todo-form">
         <input
           id="todo-input"
-          value={item}
+          value={inputText}
           type="text"
           onChange={handleNewItem}
         />
@@ -68,7 +68,7 @@ const ToDo = () => {
       </form>
 
       <ul className="todo-list">
-        {itemArray.map((item) => (
+        {todos.map((item) => (
           <li key={item} id={item} className="todo-item">
             {item}
             <div className="todo-button-container">
