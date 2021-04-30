@@ -15,6 +15,21 @@
   justify-content: space-evenly;
 }
 
+h1 {
+  text-transform: uppercase;
+  font-size: 5.5rem;
+  color: white;
+}
+
+h2 {
+  font-size: 3rem;
+  text-transform: uppercase;
+}
+
+button img {
+  pointer-events: none;
+}
+
 .time-container {
   margin: 3em auto 1em auto;
   display: flex;
@@ -46,17 +61,6 @@
   height: 100px;
   width: 90px;
   background-color: black;
-}
-
-h1 {
-  text-transform: uppercase;
-  font-size: 5.5rem;
-  color: white;
-}
-
-h2 {
-  font-size: 3rem;
-  text-transform: uppercase;
 }
 
 #reset-button,
@@ -112,6 +116,28 @@ h2 {
   text-align: left;
   padding: 1em 2em;
   font-size: 1.2rem;
+}
+
+.todo-item {
+  background-color: rgba(255, 190, 175, 0.434);
+  width: 100%;
+  padding: 0.5em;
+  border-radius: 4px;
+  margin: 0.5em 0;
+  height: 43.5px;
+}
+
+.todo-button-container {
+  float: right;
+}
+
+.todo-item-button {
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0.5em;
+  margin: -0.5em -0.5em 0 1em;
 }
 
 footer {
