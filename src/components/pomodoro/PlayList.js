@@ -7,8 +7,7 @@ const PlayList = (props) => {
           ? "https://open.spotify.com/embed/playlist/30AJVDE87gt94w4LoPO3lM"
           : "https://open.spotify.com/embed/playlist/37i9dQZF1DWZeKCadgRdKQ"
       }
-      width="300"
-      height="330"
+      width="320"
       frameBorder="0"
       allowtransparency="true"
       allow="encrypted-media"
